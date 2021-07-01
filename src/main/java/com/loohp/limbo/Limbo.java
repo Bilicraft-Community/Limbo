@@ -294,14 +294,14 @@ public class Limbo {
         pluginFolder = new File("plugins");
         pluginFolder.mkdirs();
         
-        File defaultCommandsJar = new File(pluginFolder, "LimboDefaultCmd.jar");
+        /* File defaultCommandsJar = new File(pluginFolder, "LimboDefaultCmd.jar");
         defaultCommandsJar.delete();
         console.sendMessage("Downloading limbo default commands module from github...");
         ReadableByteChannel rbc = Channels.newChannel(new URL("https://github.com/LOOHP/Limbo/raw/master/modules/LimboDefaultCmd.jar").openStream());
 	    FileOutputStream fos = new FileOutputStream(defaultCommandsJar);
 	    fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
 	    fos.close();
-		
+	*/
 	    pluginManager = new PluginManager(pluginFolder);
 	    try {
 			Method loadPluginsMethod = PluginManager.class.getDeclaredMethod("loadPlugins");
@@ -496,7 +496,7 @@ public class Limbo {
 	}
 	
 	public String buildLegacyPingResponse(String version, BaseComponent[] motd, int maxPlayers, int playersOnline) {
-		String begin = "ง1";
+		String begin = "ยง1";
 		return String.join("\00", begin, "127", version, String.join("", Arrays.asList(motd).stream().map(each -> each.toLegacyText()).collect(Collectors.toList())), String.valueOf(playersOnline), String.valueOf(maxPlayers));
 	}
 	
